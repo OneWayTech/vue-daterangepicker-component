@@ -37,11 +37,7 @@ var App = {
 
 // run app!
 var router = new VueRouter();
-router.map({
-  '/': {
-    component: { template: '<code>$route.query: {{ $route.query | json }}</code>' }
-  }
-});
+router.map({ '/': { component: { template: '<div></div>' } } });
 router.start(App, '#app');
 </script>
 </body>
