@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Date Range Picker Component Example</title>
+  <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div id="app" class="container" style="margin-top:50px">
+    <button class="btn btn-default btn-xs btn-block" onclick="location.reload()">
+      Click me to force reload current page, to see how the component keep in sync with URL's query string
+    </button>
+    <br>
+    <code>$route.query: {{ $route.query | json }}</code>
+    <hr>
+    <date-range-picker></date-range-picker>
+  </div>
+
+<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/vue/1.0.28/vue.min.js"></script>
+<script src="//cdn.bootcss.com/vue-router/0.7.13/vue-router.min.js"></script>
+<script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap-daterangepicker/2.1.25/daterangepicker.min.js"></script>
+<script src="./dist/vue-daterangepicker-component.min.js"></script>
+<script>
+// setup
+Vue.use(VueRouter);
+Vue.config.devtools = true;
+
+// root component
+var App = {
+  components: { DateRangePicker: VueDateRangePicker }
+};
+
+// run app!
+var router = new VueRouter();
+router.map({
+  '/': {
+    component: { template: '<code>$route.query: {{ $route.query | json }}</code>' }
+  }
+});
+router.start(App, '#app');
+</script>
+</body>
+</html>
